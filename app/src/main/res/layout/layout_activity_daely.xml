@@ -4,7 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.daely.DaelyActivity">
+
+    <FrameLayout
+        android:id="@+id/Daely_MainActivity_FragmentHolder_FrameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@id/Daely_MainActivity_NavBar_BottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/Daely_MainActivity_NavBar_BottomNavigationView"
@@ -16,14 +30,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation">
-
-        <FrameLayout
-            android:id="@+id/Daely_MainActivity_FragmentHolder_FrameLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </FrameLayout>
-
-    </android.support.design.widget.BottomNavigationView>
+        app:menu="@menu/navigation" />
 
 </android.support.constraint.ConstraintLayout>

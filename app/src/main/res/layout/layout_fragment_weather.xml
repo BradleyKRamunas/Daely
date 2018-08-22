@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardUseCompatPadding="true">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/Daely_WeatherFragment_Date_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Monday"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Daely_WeatherFragment_Location_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="Palo Alto"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Daely_WeatherFragment_Date_TextView" />
+
+        <ImageView
+            android:id="@+id/Daely_WeatherFragment_Weather_ImageView"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Daely_WeatherFragment_Location_TextView"
+            app:srcCompat="@drawable/ic_clear" />
+
+        <TextView
+            android:id="@+id/Daely_WeatherFragment_Temperature_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="70"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/Daely_WeatherFragment_Weather_ImageView"
+            app:layout_constraintStart_toEndOf="@+id/Daely_WeatherFragment_Weather_ImageView"
+            app:layout_constraintTop_toTopOf="@+id/Daely_WeatherFragment_Weather_ImageView" />
+
+        <TextView
+            android:id="@+id/Daely_WeatherFragment_TemperatureType_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="ºF"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/Daely_WeatherFragment_Temperature_TextView"
+            app:layout_constraintTop_toTopOf="@+id/Daely_WeatherFragment_Temperature_TextView" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>
