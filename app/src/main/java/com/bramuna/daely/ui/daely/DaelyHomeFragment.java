@@ -28,7 +28,6 @@ public class DaelyHomeFragment extends Fragment {
 
     private final static String TAG = "DaelyHomeFragment";
 
-    private DaelyViewModel daelyViewModel;
     private FragmentManager fragmentManager;
 
     private final WeatherFragment weatherFragment = new WeatherFragment();
@@ -39,8 +38,6 @@ public class DaelyHomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        daelyViewModel = ViewModelProviders.of(getActivity()).get(DaelyViewModel.class);
-        daelyViewModel.getLiveData().observe(this, this::handleResult);
     }
 
     @Nullable
@@ -56,26 +53,11 @@ public class DaelyHomeFragment extends Fragment {
 
     private void setupChildrenFragments() {
         fragmentManager.beginTransaction()
-                .add(R.id.Daely_DaelyHomeFragment_Holder1_FrameLayout, weatherFragment).commit();
+                .replace(R.id.Daely_DaelyHomeFragment_Holder1_FrameLayout, weatherFragment).commit();
         fragmentManager.beginTransaction()
-                .add(R.id.Daely_DaelyHomeFragment_Holder2_FrameLayout, todayInHistoryFragment).commit();
+                .replace(R.id.Daely_DaelyHomeFragment_Holder2_FrameLayout, todayInHistoryFragment).commit();
         fragmentManager.beginTransaction()
-                .add(R.id.Daely_DaelyHomeFragment_Holder3_FrameLayout, quoteOfDayFragment).commit();
-    }
-
-    private void handleResult(Response<String> response) {
-        Status status = response.getStatus();
-        switch(status) {
-            case LOADING:
-
-                break;
-            case COMPLETE:
-
-                break;
-            case ERROR:
-
-                break;
-        }
+                .replace(R.id.Daely_DaelyHomeFragment_Holder3_FrameLayout, quoteOfDayFragment).commit();
     }
 
 }
