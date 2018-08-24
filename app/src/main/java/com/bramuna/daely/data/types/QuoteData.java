@@ -1,12 +1,18 @@
-package com.bramuna.daely.data;
-
-import com.bramuna.daely.data.api.types.TheySaidSo;
+package com.bramuna.daely.data.types;
 
 public class QuoteData {
+
+    public static final QuoteData mockData = new QuoteData();
 
     private String quote;
     private String author;
     private String QODDate;
+
+    static {
+        mockData.quote = "It is often times better to mock services rather than repeatedly rely on them when testing.";
+        mockData.author = "John Doe";
+        mockData.QODDate = "Date";
+    }
 
     private QuoteData() {
     }

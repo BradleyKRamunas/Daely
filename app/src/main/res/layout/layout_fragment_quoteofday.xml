@@ -58,5 +58,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Daely_QuoteOfDayFragment_Author_TextView" />
+
+        <ImageButton
+            android:id="@+id/Daely_QuoteOfDayFragment_Refresh_ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Daely_QuoteOfDayFragment_Author_TextView"
+            app:srcCompat="@drawable/ic_refresh_24dp" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

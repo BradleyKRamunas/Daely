@@ -1,6 +1,4 @@
-package com.bramuna.daely.data;
-
-import com.bramuna.daely.data.api.types.History;
+package com.bramuna.daely.data.types;
 
 import java.util.List;
 

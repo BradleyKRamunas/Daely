@@ -1,6 +1,6 @@
 package com.bramuna.daely.data.api.quotes;
 
-import com.bramuna.daely.data.api.types.TheySaidSo;
+import com.bramuna.daely.data.types.TheySaidSo;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;

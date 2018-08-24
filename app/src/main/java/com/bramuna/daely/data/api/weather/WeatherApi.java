@@ -1,6 +1,6 @@
 package com.bramuna.daely.data.api.weather;
 
-import com.bramuna.daely.data.WeatherData;
+import com.bramuna.daely.data.types.WeatherData;
 import com.bramuna.daely.util.Constants;
 
 import io.reactivex.Single;
@@ -24,9 +24,13 @@ public class WeatherApi implements BaseWeatherApi {
     }
 
     @Override
-    public Single<WeatherData> getWeather(int woeid) {
-        MetaWeatherApi metaWeatherApi = retrofit.create(MetaWeatherApi.class);
-        return metaWeatherApi.getWeather(woeid)
+    public Single<WeatherData> getWeather(String locationName) {
+        YahooWeatherApi metaWeatherApi = retrofit.create(YahooWeatherApi.class);
+        return metaWeatherApi.getWeather(formQuery(locationName))
                 .map(WeatherData::from);
+    }
+
+    private String formQuery(String locationName) {
+        return String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\")", locationName);
     }
 }

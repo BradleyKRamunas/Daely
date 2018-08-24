@@ -1,6 +1,6 @@
 package com.bramuna.daely.data.api.history;
 
-import com.bramuna.daely.data.HistoryData;
+import com.bramuna.daely.data.types.HistoryData;
 import com.bramuna.daely.util.Constants;
 
 import io.reactivex.Single;

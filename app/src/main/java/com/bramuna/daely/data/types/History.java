@@ -1,4 +1,4 @@
-package com.bramuna.daely.data.api.types;
+package com.bramuna.daely.data.types;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -1,6 +1,5 @@
 package com.bramuna.daely.ui.fragments;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,8 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bramuna.daely.R;
-import com.bramuna.daely.data.HistoryData;
-import com.bramuna.daely.data.QuoteData;
+import com.bramuna.daely.data.types.HistoryData;
 import com.bramuna.daely.data.Response;
 import com.bramuna.daely.data.Status;
 import com.bramuna.daely.ui.daely.DaelyViewModel;
@@ -26,8 +24,9 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class TodayInHistoryFragment extends Fragment implements BaseFragment {
+public class TodayInHistoryFragment extends Fragment {
 
     private final static String TAG = "TodayInHistoryFragment";
 
@@ -58,6 +57,11 @@ public class TodayInHistoryFragment extends Fragment implements BaseFragment {
         View view = inflater.inflate(R.layout.layout_fragment_todayinhistory, container, false);
         ButterKnife.bind(this, view);
         return view;
+    }
+
+    @OnClick(R.id.Daely_TodayInHistoryFragment_Refresh_ImageButton)
+    public void onRefreshClick(View view) {
+        daelyViewModel.fetchTodayInHistory();
     }
 
     private void handleResult(Response<HistoryData> response) {

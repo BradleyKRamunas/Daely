@@ -35,92 +35,75 @@
         <TextView
             android:id="@+id/Daely_WeatherFragment_Location_TextView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
             android:text="Palo Alto"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Daely_WeatherFragment_Date_TextView" />
+            app:layout_constraintBottom_toBottomOf="@+id/Daely_WeatherFragment_Date_TextView"
+            app:layout_constraintStart_toEndOf="@+id/Daely_WeatherFragment_Date_TextView" />
 
         <ImageView
             android:id="@+id/Daely_WeatherFragment_Weather_ImageView"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Daely_WeatherFragment_Location_TextView"
+            app:layout_constraintTop_toBottomOf="@+id/Daely_WeatherFragment_Date_TextView"
             app:srcCompat="@drawable/ic_clear" />
 
         <TextView
             android:id="@+id/Daely_WeatherFragment_Temperature_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
             android:text="70ºF"
             android:textAppearance="@android:style/TextAppearance.Material.Large"
             android:textSize="36sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintHorizontal_bias="0.235"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/guideline2"
-            app:layout_constraintVertical_bias="0.714" />
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
         <TextView
             android:id="@+id/Daely_WeatherFragment_High_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="24dp"
             android:text="86ºF"
             android:textAppearance="@android:style/TextAppearance.Material.Body1"
             android:textColor="@color/temp_high"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/Daely_WeatherFragment_Weather_ImageView" />
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/Daely_WeatherFragment_Low_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
             android:text="68ºF"
             android:textAppearance="@android:style/TextAppearance.Material.Body1"
             android:textColor="@color/temp_low"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/Daely_WeatherFragment_Weather_ImageView"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <View
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="2dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
             android:background="?android:attr/listDivider"
-            app:layout_constraintBottom_toTopOf="@+id/Daely_WeatherFragment_Low_TextView"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="@+id/Daely_WeatherFragment_High_TextView"
             app:layout_constraintStart_toStartOf="@+id/Daely_WeatherFragment_High_TextView"
-            app:layout_constraintTop_toBottomOf="@+id/Daely_WeatherFragment_High_TextView" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Powered by MetaWeather"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
@@ -147,24 +130,59 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:text="High"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintBottom_toBottomOf="@+id/Daely_WeatherFragment_High_TextView"
             app:layout_constraintEnd_toStartOf="@+id/Daely_WeatherFragment_High_TextView"
-            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+            app:layout_constraintTop_toTopOf="@+id/Daely_WeatherFragment_High_TextView" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
             android:text="Low"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintBottom_toBottomOf="@+id/Daely_WeatherFragment_Low_TextView"
             app:layout_constraintEnd_toStartOf="@+id/Daely_WeatherFragment_Low_TextView"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
+            app:layout_constraintTop_toTopOf="@+id/Daely_WeatherFragment_Low_TextView" />
+
+        <ImageButton
+            android:id="@+id/Daely_WeatherFragment_Refresh_ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:srcCompat="@drawable/ic_refresh_24dp" />
+
+        <ImageView
+            android:id="@+id/Daely_WeatherFragment_Yahoo_ImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:srcCompat="@drawable/yahoo" />
+
+        <TextView
+            android:id="@+id/Daely_WeatherFragment_Description_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Sunny"
+            app:layout_constraintEnd_toEndOf="@+id/Daely_WeatherFragment_Weather_ImageView"
+            app:layout_constraintStart_toStartOf="@+id/Daely_WeatherFragment_Weather_ImageView"
+            app:layout_constraintTop_toBottomOf="@+id/Daely_WeatherFragment_Weather_ImageView" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
