@@ -10,6 +10,7 @@ import com.bramuna.daely.data.types.HistoryData;
 import com.bramuna.daely.data.types.QuoteData;
 import com.bramuna.daely.data.Response;
 import com.bramuna.daely.data.Status;
+import com.bramuna.daely.data.types.SettingsData;
 import com.bramuna.daely.data.types.WeatherData;
 
 import io.reactivex.Completable;
@@ -29,7 +30,7 @@ public class DaelyViewModel extends ViewModel {
     private final MutableLiveData<Response<WeatherData>> weatherLiveData = new MutableLiveData<>();
     private final MutableLiveData<Response<QuoteData>> quoteLiveData = new MutableLiveData<>();
     private final MutableLiveData<Response<HistoryData>> historyLiveData = new MutableLiveData<>();
-    private final MutableLiveData<Response<Integer>> locationSelectedIndexLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Response<SettingsData>> settingsLiveData = new MutableLiveData<>();
 
     @Override
     protected void onCleared() {
@@ -45,8 +46,8 @@ public class DaelyViewModel extends ViewModel {
     public MutableLiveData<Response<HistoryData>> getHistoryLiveData() {
         return historyLiveData;
     }
-    public MutableLiveData<Response<Integer>> getLocationSelectedIndexLiveData() {
-        return locationSelectedIndexLiveData;
+    public MutableLiveData<Response<SettingsData>> getSettingsLiveData() {
+        return settingsLiveData;
     }
 
     public void fetchWeather() {
@@ -79,18 +80,27 @@ public class DaelyViewModel extends ViewModel {
         compositeDisposable.add(disposable);
     }
 
-    public void fetchLocationSelectedIndex() {
-        Disposable disposable = repository.getSelectedLocationIndex()
+    public void fetchSettings() {
+        Disposable disposable = repository.getSettingsData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(consumer -> locationSelectedIndexLiveData.setValue(new Response<>(Status.LOADING, null, null)))
-                .subscribe(data -> locationSelectedIndexLiveData.setValue(new Response<>(Status.COMPLETE, data, null)),
-                        error -> locationSelectedIndexLiveData.setValue(new Response<>(Status.ERROR, null, error)));
+                .doOnSubscribe(consumer -> settingsLiveData.setValue(new Response<>(Status.LOADING, null, null)))
+                .subscribe(data -> settingsLiveData.setValue(new Response<>(Status.COMPLETE, data, null)),
+                        error -> settingsLiveData.setValue(new Response<>(Status.ERROR, null, error)));
         compositeDisposable.add(disposable);
     }
 
     public Completable setLocationSelectedIndex(int index) {
         return repository.setSelectedLocationIndex(index);
+    }
+
+    public Completable setNotificationTime(String time) {
+        return repository.setNotificationTime(time);
+    }
+
+    public Completable setNotifications(boolean value) {
+        //TODO: handle canceling/creating notifications via AlarmManager
+        return repository.setNotificationOption(value);
     }
 
 }

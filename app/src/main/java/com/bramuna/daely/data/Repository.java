@@ -4,6 +4,7 @@ import com.bramuna.daely.data.api.history.BaseTodayInHistoryApi;
 import com.bramuna.daely.data.api.quotes.BaseQuoteApi;
 import com.bramuna.daely.data.types.HistoryData;
 import com.bramuna.daely.data.types.QuoteData;
+import com.bramuna.daely.data.types.SettingsData;
 import com.bramuna.daely.data.types.WeatherData;
 import com.bramuna.daely.data.api.weather.BaseWeatherApi;
 import com.bramuna.daely.data.preferences.BasePreferencesConnector;
@@ -92,5 +93,10 @@ public class Repository implements BaseRepository {
     @Override
     public Single<String> getNotificationTime() {
         return preferencesConnector.getNotificationTime();
+    }
+
+    @Override
+    public Single<SettingsData> getSettingsData() {
+        return preferencesConnector.getSettingsData();
     }
 }

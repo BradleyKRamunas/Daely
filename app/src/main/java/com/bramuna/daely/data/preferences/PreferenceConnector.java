@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.bramuna.daely.data.types.SettingsData;
+
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
@@ -46,6 +48,14 @@ public class PreferenceConnector implements BasePreferencesConnector {
 
     @Override
     public Single<String> getNotificationTime() {
-        return Single.just(sharedPreferences.getString("notiftime", "08:00:00 AM")).subscribeOn(Schedulers.io());
+        return Single.just(sharedPreferences.getString("notiftime", "8:00 AM")).subscribeOn(Schedulers.io());
+    }
+
+    @Override
+    public Single<SettingsData> getSettingsData() {
+        return Single.just(new SettingsData(sharedPreferences.getInt("index", 0),
+                sharedPreferences.getBoolean("notifs", true),
+                sharedPreferences.getString("notiftime", "8:00 AM")))
+                .subscribeOn(Schedulers.io());
     }
 }

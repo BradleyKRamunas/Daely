@@ -95,7 +95,7 @@
                     android:textSize="18sp" />
 
                 <Switch
-                    android:id="@+id/switch2"
+                    android:id="@+id/Daely_DaelySettingsFragment_Notifications_Switch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -122,12 +122,12 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/Daely_DaelySettingsFragment_Time_TextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:drawableRight="@drawable/ic_edit_24dp"
                     android:drawablePadding="8dp"
+                    android:drawableRight="@drawable/ic_edit_24dp"
                     android:text="9:00 am"
                     android:textAlignment="textEnd"
                     android:textAppearance="@android:style/TextAppearance.Material.Menu"

@@ -2,6 +2,7 @@ package com.bramuna.daely.data;
 
 import com.bramuna.daely.data.types.HistoryData;
 import com.bramuna.daely.data.types.QuoteData;
+import com.bramuna.daely.data.types.SettingsData;
 import com.bramuna.daely.data.types.WeatherData;
 
 import io.reactivex.Completable;
@@ -19,4 +20,5 @@ public interface BaseRepository {
     Single<Boolean> getNotificationOption();
     Completable setNotificationTime(String time);
     Single<String> getNotificationTime();
+    Single<SettingsData> getSettingsData();
 }
