@@ -5,7 +5,9 @@ import android.arch.lifecycle.ViewModel;
 import android.util.Log;
 
 import com.bramuna.daely.data.BaseRepository;
+import com.bramuna.daely.data.NotificationTask;
 import com.bramuna.daely.data.Repository;
+import com.bramuna.daely.data.Task;
 import com.bramuna.daely.data.types.HistoryData;
 import com.bramuna.daely.data.types.QuoteData;
 import com.bramuna.daely.data.Response;
@@ -31,6 +33,7 @@ public class DaelyViewModel extends ViewModel {
     private final MutableLiveData<Response<QuoteData>> quoteLiveData = new MutableLiveData<>();
     private final MutableLiveData<Response<HistoryData>> historyLiveData = new MutableLiveData<>();
     private final MutableLiveData<Response<SettingsData>> settingsLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Task> tasksLiveData = new MutableLiveData<>();
 
     @Override
     protected void onCleared() {
@@ -48,6 +51,9 @@ public class DaelyViewModel extends ViewModel {
     }
     public MutableLiveData<Response<SettingsData>> getSettingsLiveData() {
         return settingsLiveData;
+    }
+    public MutableLiveData<Task> getTasksLiveData() {
+        return tasksLiveData;
     }
 
     public void fetchWeather() {
@@ -95,11 +101,18 @@ public class DaelyViewModel extends ViewModel {
     }
 
     public Completable setNotificationTime(String time) {
+        Log.i(TAG, "New time selected: " + time);
+        tasksLiveData.postValue(NotificationTask.turnOnOrModify(time));
         return repository.setNotificationTime(time);
     }
 
     public Completable setNotifications(boolean value) {
-        //TODO: handle canceling/creating notifications via AlarmManager
+        Log.i(TAG, "New notification option selected: " + value);
+        if(value) {
+            tasksLiveData.postValue(NotificationTask.turnOnOrModify(repository.getNotificationTime().blockingGet()));
+        } else {
+            tasksLiveData.postValue(NotificationTask.turnOff());
+        }
         return repository.setNotificationOption(value);
     }
 

@@ -1,7 +1,9 @@
 package com.bramuna.daely.ui.daely;
 
+import android.app.PendingIntent;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,8 +15,12 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.bramuna.daely.R;
+import com.bramuna.daely.data.NotificationTask;
 import com.bramuna.daely.data.Response;
 import com.bramuna.daely.data.Status;
+import com.bramuna.daely.data.Task;
+import com.bramuna.daely.data.TaskType;
+import com.bramuna.daely.util.NotificationUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,7 +81,21 @@ public class DaelyActivity extends AppCompatActivity {
                 .add(R.id.Daely_MainActivity_FragmentHolder_FrameLayout, homeFragment).commit();
 
         daelyViewModel = ViewModelProviders.of(this).get(DaelyViewModel.class);
+        daelyViewModel.getTasksLiveData().observe(this, this::handleTask);
 
+    }
+
+    private void handleTask(Task task) {
+        if(task.getType() == TaskType.Notification) {
+            NotificationTask notificationTask = (NotificationTask) task;
+            if(notificationTask.isToggle()) {
+                // enable or update notification
+                NotificationUtils.updateNotification(getApplicationContext(), notificationTask.getTimeString());
+            } else {
+                // disable notification
+                NotificationUtils.cancelNotification(getApplicationContext());
+            }
+        }
     }
 
 }

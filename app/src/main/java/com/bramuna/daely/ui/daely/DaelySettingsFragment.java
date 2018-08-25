@@ -104,6 +104,8 @@ public class DaelySettingsFragment extends Fragment {
 
     @OnCheckedChanged(R.id.Daely_DaelySettingsFragment_Notifications_Switch)
     public void onToggleNotifications(boolean value) {
+        if(!value) time.setEnabled(false);
+        else time.setEnabled(true);
         daelyViewModel.setNotifications(value).blockingAwait();
     }
 
